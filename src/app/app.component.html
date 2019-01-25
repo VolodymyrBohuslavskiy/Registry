@@ -1,0 +1,79 @@
+<div>
+  <button>Login</button>
+  <button>Registry</button>
+</div>
+
+<!-- Односторонньє зваязування (обовязково повинні бути усі атрибути тега)-->
+<div>
+  <form
+    #regform="ngForm"
+    (ngSubmit)="registry(regform)">
+    <label>
+      Email
+      <input
+        type="email"
+        name="email"
+        ngModel
+        email
+        required
+      >
+    </label>
+
+    <label>Username
+      <input
+        type="text"
+        name="username"
+        ngModel
+        required>
+    </label>
+
+    <label>
+      Password
+      <input
+        type="password"
+        name="password"
+        ngModel
+        required
+      >
+    </label>
+
+    <button
+      [disabled]="!regform.valid">
+      Registry now
+    </button>
+
+  </form>
+</div>
+
+<!--Двостороннє звязування (обовязково повинні бути усі атрибути тега)-->
+<div>
+  <form
+    (ngSubmit)="login()">
+
+    <label>
+      Username
+      <input
+        type="text"
+        name="username"
+        [(ngModel)]="user.username"
+        required
+      >
+    </label>
+
+    <label>
+      Password
+      <input
+        type="password"
+        name="password"
+        [(ngModel)]="user.password"
+        required
+      >
+    </label>
+
+    <button
+    >
+      Log In
+    </button>
+  </form>
+</div>
+
