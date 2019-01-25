@@ -1,0 +1,21 @@
+
+div {
+  margin: 10px;
+  text-align: center;
+  border: solid darkolivegreen 3px;
+  border-radius: 5px;
+  background: burlywood;
+
+}
+
+input {
+  margin: 10px;
+}
+
+label{
+  text-align: right;
+  margin-left: 20px;
+}
+button {
+  margin: 10px;
+}

@@ -1,10 +1,10 @@
 <div>
-  <button>Login</button>
-  <button>Registry</button>
+  <button (click)="onLog()">Login</button>
+  <button (click)="onReg()">Registry</button>
 </div>
 
 <!-- Односторонньє зваязування (обовязково повинні бути усі атрибути тега)-->
-<div>
+<div [ngStyle]="{display: !reg ? 'none' : 'block'}">
   <form
     #regform="ngForm"
     (ngSubmit)="registry(regform)">
@@ -15,8 +15,7 @@
         name="email"
         ngModel
         email
-        required
-      >
+        required>
     </label>
 
     <label>Username
@@ -33,8 +32,7 @@
         type="password"
         name="password"
         ngModel
-        required
-      >
+        required>
     </label>
 
     <button
@@ -42,11 +40,16 @@
       Registry now
     </button>
 
+
   </form>
+  <button (click)="hide(reg)">
+    Close
+  </button>
+
 </div>
 
 <!--Двостороннє звязування (обовязково повинні бути усі атрибути тега)-->
-<div>
+<div [ngStyle]="{display: !log ? 'none' : 'block'}">
   <form
     (ngSubmit)="login()">
 
@@ -65,15 +68,19 @@
       <input
         type="password"
         name="password"
+        value=null
         [(ngModel)]="user.password"
-        required
-      >
+        required>
     </label>
 
-    <button
-    >
+    <button (click)="clearFields()">
       Log In
     </button>
+
   </form>
+  <button
+    (click)="hide(log)">
+    Close
+  </button>
 </div>
 
