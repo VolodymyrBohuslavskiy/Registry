@@ -4,10 +4,12 @@
 </div>
 
 <!-- Односторонньє зваязування (обовязково повинні бути усі атрибути тега)-->
-<div [ngStyle]="{display: !reg ? 'none' : 'block'}">
+<div
+  [ngStyle]="{display: !reg ? 'none' : 'block'}">
   <form
     #regform="ngForm"
-    (ngSubmit)="registry(regform)">
+    (ngSubmit)="registry(regform)"
+  >
     <label>
       Email
       <input
@@ -36,10 +38,17 @@
     </label>
 
     <button
-      [disabled]="!regform.valid">
+
+    >
       Registry now
     </button>
 
+    <div
+      style="color: red"
+      [ngStyle]="{display: message ? 'block' : 'none'}"
+    >
+      Please enter {{emptyField}} field !
+    </div>
 
   </form>
   <button (click)="hide(reg)">
@@ -59,7 +68,7 @@
         type="text"
         name="username"
         [(ngModel)]="user.username"
-        required
+
       >
     </label>
 
@@ -68,16 +77,23 @@
       <input
         type="password"
         name="password"
-        value=null
         [(ngModel)]="user.password"
-        required>
+        >
     </label>
 
-    <button (click)="clearFields()">
+    <button>
       Log In
     </button>
 
   </form>
+
+  <div
+    style="color: red"
+    [ngStyle]="{display: message1 ? 'block' : 'none'}"
+  >
+    Please enter {{emptyField}} field !
+  </div>
+
   <button
     (click)="hide(log)">
     Close
